@@ -62,9 +62,9 @@ RSpec.describe Hanami::CLI::Commands::Gem::New do
 
         gem "rake"
 
+        gem "hanami", "#{hanami_version}"
         gem "hanami-router", "#{hanami_version}"
         gem "hanami-controller", "#{hanami_version}"
-        gem "hanami", "#{hanami_version}"
 
         gem "puma"
 
