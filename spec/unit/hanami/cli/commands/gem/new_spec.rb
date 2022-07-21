@@ -68,6 +68,8 @@ RSpec.describe Hanami::CLI::Commands::Gem::New do
 
         gem "puma"
 
+        gem "dry-types"
+
         group :cli, :development, :test do
           gem "hanami-rspec"
         end
