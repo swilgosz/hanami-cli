@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/cli"
+require "dry/configurable"
 require "zeitwerk"
 
 module Hanami
@@ -28,6 +29,10 @@ module Hanami
     end
 
     gem_loader.setup
+
+    require_relative "cli/configuration"
+    extend Configuration
+
     require_relative "cli/commands"
     require_relative "cli/errors"
     require_relative "cli/version"

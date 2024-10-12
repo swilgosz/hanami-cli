@@ -14,10 +14,11 @@ module Hanami
         class App
           # @since 2.0.0
           # @api private
-          def initialize(fs:, inflector:)
+          def initialize(fs:, inflector:, config: Hanami::CLI.config)
             super()
             @fs = fs
             @inflector = inflector
+            @config = config
           end
 
           # @since 2.0.0
@@ -32,6 +33,8 @@ module Hanami
           attr_reader :fs
 
           attr_reader :inflector
+
+          attr_reader :config
 
           def generate_app(app, context) # rubocop:disable Metrics/AbcSize
             fs.write(".gitignore", t("gitignore.erb", context))
@@ -95,7 +98,7 @@ module Hanami
             require "erb"
 
             ERB.new(
-              File.read(File.join(__dir__, "app", path)),
+              File.read(File.join(config.template_dir, "gem", "app", path)),
               trim_mode: "-"
             ).result(context.ctx)
           end
